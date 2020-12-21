@@ -22,4 +22,9 @@ class TodoController extends Controller
         $task->fill($form)->save();
         return redirect('/index');
     }
+    public function sample(Request $request)
+    {
+        $items = Task::all();
+        return view('task.sample', ['items' => $items]);
+    }
 }

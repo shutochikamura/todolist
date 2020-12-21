@@ -3,7 +3,7 @@
 @section('title', 'TodoList')
 
 @section('content')
-<h1>ToDoリスト</h1>
+
 <tr class="todo-radio">
     <td><input class="radio" type="radio" name="all" value="すべて" checked></td>
     すべて
@@ -22,10 +22,15 @@
     <tr>
         <td class="h3">{{$item->id}}</td>
         <td class="h3">{{$item->comment}}</td>
-
+        @if ($item->state == 0)
         <td>
-            <input class="btn" type="button" name="state" value="{{$item->state}}">
+            <input class="btn" type="button" name="state" value="作業中">
         </td>
+        @else
+        <td>
+            <input class="btn" type="button" name="state" value="完了">
+        </td>
+        @endif
 
         <td><input class="btn" type="button" name="delete" value="削除"></td>
     </tr>
@@ -39,7 +44,7 @@
     </ul>
 </div>
 @endif
-<form action="index/create" method="post">
+<form action="/index/create" method="post">
     @csrf
     <input class="text" type="text" name="comment">
     <input class="btn" type="submit" name="send" value="追加">
