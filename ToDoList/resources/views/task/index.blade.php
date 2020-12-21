@@ -22,7 +22,7 @@
     <tr>
         <td class="h3">{{$item->id}}</td>
         <td class="h3">{{$item->comment}}</td>
-        @if ($item->state == 0)
+        @if ($item->state === 'true')
         <td>
             <input class="btn" type="button" name="state" value="作業中">
         </td>

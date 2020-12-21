@@ -11,7 +11,6 @@ class Task extends Model
 
 
     public static $rules = array(
-        'comment' => 'required',
-        'state' => 'boolean'
+        'comment' => 'required'
     );
 }

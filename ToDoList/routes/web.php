@@ -18,5 +18,3 @@ Route::get('/', function () {
 });
 Route::get('index', 'App\Http\Controllers\TodoController@index');
 Route::post('index/create', 'App\Http\Controllers\TodoController@add');
-
-Route::post('index/sample', 'App\Http\Controllers\TodoController@sample');
