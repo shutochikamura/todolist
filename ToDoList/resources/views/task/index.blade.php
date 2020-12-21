@@ -1,50 +1,48 @@
-<html>
+@extends('layouts.app')
 
-<head>
-    <title>TodoList</title>
-</head>
+@section('title', 'TodoList')
 
-<body>
-    <h1>ToDoリスト</h1>
+@section('content')
+<h1>ToDoリスト</h1>
+<tr class="todo-radio">
+    <td><input class="radio" type="radio" name="all" value="すべて" checked></td>
+    すべて
+    <td><input class="radio" type="radio" name="progress" value="作業中"></td>
+    作業中
+    <td><input class="radio" type="radio" name="done" value="完了"></td>
+    完了
+</tr>
+<table>
     <tr>
-        <td><input type="radio" name="all"></td>
-        <th>すべて</th>
-        <td><input type="radio" name="progress"></td>
-        <th>作業中</th>
-        <td><input type="radio" name="done"></td>
-        <th>完了</th>
-
+        <th>ID</th>
+        <th>コメント</th>
+        <th>状態</th>
     </tr>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>コメント</th>
-            <th>状態</th>
-        </tr>
-        @foreach ($items as $item)
-        <tr>
-            <td>{{$item->id}}</td>
-            <td>{{$item->comment}}</td>
-            <td><input type="button" name="state" value="{{$item->state}}"></td>
-            <td><input type="button" name="delete" value="削除"></td>
-        </tr>
-        @endforeach
-    </table>
-    <h2>新規タスクの追加</h2>
-    @if (count($errors) > 0)
-    <div>
-        <ul>
-            <li>{{$errors}}</li>
-        </ul>
-    </div>
-    @endif
-    <form action="index" method="post">
-        @csrf
+    @foreach ($items as $item)
+    <tr>
+        <td class="h3">{{$item->id}}</td>
+        <td class="h3">{{$item->comment}}</td>
 
-        <input type="text" name="comment">
-        <input type="hidden" name="state" value="作業中">
-        <input type="submit" name="send" value="追加">
-    </form>
-</body>
+        <td>
+            <input class="btn" type="button" name="state" value="{{$item->state}}">
+        </td>
 
-</html>
+        <td><input class="btn" type="button" name="delete" value="削除"></td>
+    </tr>
+    @endforeach
+</table>
+<h2>新規タスクの追加</h2>
+@if (count($errors) > 0)
+<div>
+    <ul>
+        <li>{{$errors}}</li>
+    </ul>
+</div>
+@endif
+<form action="index/create" method="post">
+    @csrf
+    <input class="text" type="text" name="comment">
+    <input class="btn" type="submit" name="send" value="追加">
+</form>
+
+@endsection
