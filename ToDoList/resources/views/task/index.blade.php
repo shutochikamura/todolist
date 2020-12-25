@@ -22,7 +22,7 @@
     <tr>
         <form action="/index/delete/{{$item->id}}" method="post">
             @csrf
-            <td class="h3">{{$item->id}}</td>
+            <td class="h3">{{$loop->iteration}}</td>
             <td class="h3">{{$item->comment}}</td>
             @if ($item->state == 'false')
             <td>
