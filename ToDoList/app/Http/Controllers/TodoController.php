@@ -25,10 +25,7 @@ class TodoController extends Controller
     public function remove(Request $request)
     {
         $task = Task::find($request->id);
-        if ($task != null) {
-            $task->delete();
-            return redirect('/index');
-        }
+        $task->delete();
 
         return redirect('/index');
     }

@@ -16,7 +16,8 @@ class CreateTodolistTable extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->increments('id');
             $table->string('comment');
-            $table->boolean('state')->default(0);
+            $table->boolean('state')->default(false);
+            // ->default('false')や("false")ではmigrationエラーになってしまいます
             $table->timestamps();
         });
     }
