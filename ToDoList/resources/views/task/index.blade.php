@@ -20,9 +20,9 @@
     </tr>
     @foreach ($items as $item)
     <tr>
-        <td class="h3">{{$item->id}}</td>
+        <td class="h3">{{$loop->iteration}}</td>
         <td class="h3">{{$item->comment}}</td>
-        @if ($item->state == 'false')
+        @if ($item->state === 0)
         <td>
             <input class="btn" type="button" name="state" value="作業中">
         </td>
@@ -31,8 +31,11 @@
             <input class="btn" type="button" name="state" value="完了">
         </td>
         @endif
+        <form action="/index/delete/{{$item->id}}" method="post">
+            @csrf
 
-        <td><input class="btn" type="button" name="delete" value="削除"></td>
+            <td><input class="btn" type="submit" name="delete" value="削除"></td>
+        </form>
     </tr>
     @endforeach
 </table>

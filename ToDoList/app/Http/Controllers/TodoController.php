@@ -22,4 +22,11 @@ class TodoController extends Controller
         $task->fill($form)->save();
         return redirect('/index');
     }
+    public function remove(Request $request)
+    {
+        $task = Task::find($request->id);
+        $task->delete();
+
+        return redirect('/index');
+    }
 }
