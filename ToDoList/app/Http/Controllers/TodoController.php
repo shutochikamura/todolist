@@ -29,4 +29,18 @@ class TodoController extends Controller
 
         return redirect('/index');
     }
+
+    public function state(Request $request)
+    {
+        $task = Task::find($request->id);
+        if ($task->state === 0) {
+            $task->state = 1;
+            $task->save();
+            return redirect('/index');
+        } elseif ($task->state === 1) {
+            $task->state = 0;
+            $task->save();
+            return redirect('/index');
+        }
+    }
 }

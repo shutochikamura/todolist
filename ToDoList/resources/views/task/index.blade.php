@@ -22,15 +22,18 @@
     <tr>
         <td class="h3">{{$loop->iteration}}</td>
         <td class="h3">{{$item->comment}}</td>
-        @if ($item->state === 0)
-        <td>
-            <input class="btn" type="button" name="state" value="作業中">
-        </td>
-        @else
-        <td>
-            <input class="btn" type="button" name="state" value="完了">
-        </td>
-        @endif
+        <form action="/index/state/{{$item->id}}" method="post">
+            @csrf
+            @if ($item->state === 0)
+            <td>
+                <input class="btn" type="submit" name="state" value="作業中">
+            </td>
+            @else
+            <td>
+                <input class="btn" type="submit" name="state" value="完了">
+            </td>
+            @endif
+        </form>
         <form action="/index/delete/{{$item->id}}" method="post">
             @csrf
 
