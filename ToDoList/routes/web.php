@@ -19,3 +19,4 @@ Route::get('/', function () {
 Route::get('index', 'App\Http\Controllers\TodoController@index');
 Route::post('index/create', 'App\Http\Controllers\TodoController@add');
 Route::post('index/delete/{id}', 'App\Http\Controllers\TodoController@remove');
+Route::post('index/state/{id}', 'App\Http\Controllers\TodoController@state');

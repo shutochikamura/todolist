@@ -17,7 +17,6 @@ class CreateTodolistTable extends Migration
             $table->increments('id');
             $table->string('comment');
             $table->boolean('state')->default(false);
-            // ->default('false')や("false")ではmigrationエラーになってしまいます
             $table->timestamps();
         });
     }
