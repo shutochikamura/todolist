@@ -10,6 +10,7 @@ class TodoController extends Controller
 {
     public function index(Request $request)
     {
+
         $items = Task::all();
         return view('task.index', ['items' => $items]);
     }
@@ -43,4 +44,21 @@ class TodoController extends Controller
             return redirect('/index');
         }
     }
+    /*
+    public function formSwitch(Request $request)
+    {
+        $stateList = $request->stateList;
+        if ($stateList === 'all') {
+            $items = Task::all();
+            return view('task.index', ['items' => $items]);
+        } elseif ($stateList === 'progress') {
+            $items = Task::where('state', 0)->get();
+            return view('task.index', ['items' => $items]);
+        } elseif ($stateList === 'done') {
+            $items = Task::where('state', 1)->get();
+            return view('task.index', ['items' => $items]);
+        }
+        return redirect('/index');
+    }
+    */
 }
