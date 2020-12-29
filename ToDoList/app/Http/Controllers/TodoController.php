@@ -44,8 +44,8 @@ class TodoController extends Controller
             return redirect('/index');
         }
     }
-    /*
-    public function formSwitch(Request $request)
+
+    public function stateSwitch(Request $request)
     {
         $stateList = $request->stateList;
         if ($stateList === 'all') {
@@ -58,7 +58,5 @@ class TodoController extends Controller
             $items = Task::where('state', 1)->get();
             return view('task.index', ['items' => $items]);
         }
-        return redirect('/index');
     }
-    */
 }

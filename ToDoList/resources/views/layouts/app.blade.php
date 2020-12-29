@@ -167,6 +167,8 @@
         .radio {
             cursor: pointer;
             color: gray;
+            display: inline;
+            border-radius: 10px;
         }
     </style>
 </head>

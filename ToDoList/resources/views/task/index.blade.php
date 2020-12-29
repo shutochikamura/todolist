@@ -4,19 +4,18 @@
 
 @section('content')
 
+<form action="index" method="post">
+    @csrf
+    <tr class="todo-radio">
+        <td> <input class="radio" type="submit" type="radio" name="stateList" value="all" checked></td>
+        すべて
+        <td><input class="radio" type="submit" type="radio" name="stateList" value="progress"></td>
+        作業中
+        <td><input class="radio" type="submit" type="radio" name="stateList" value="done"></td>
+        完了
+    </tr>
+</form>
 
-
-
-
-
-<tr class="todo-radio">
-    <td class="all"><input class="radio" type="radio" name="stateList" value="all" checked></td>
-    すべて
-    <td class="progress"><input class="radio" type="radio" name="stateList" value="progress"></td>
-    作業中
-    <td class="done"><input class="radio" type="radio" name="stateList" value="done"></td>
-    完了
-</tr>
 
 <table>
     <tr>
@@ -25,7 +24,10 @@
         <th>状態</th>
     </tr>
 
-    @foreach($items as $item) <tr>
+
+
+    @foreach($items as $item)
+    <tr>
         <td class="h3"> {{$loop -> iteration}} </td>
         <td class="h3"> {{$item -> comment}} </td>
         <form action="/index/state/{{$item->id}}" method="post">
@@ -46,9 +48,8 @@
             </td>
         </form>
     </tr>
+
     @endforeach
-
-
 
 </table>
 <h2>新規タスクの追加</h2>
