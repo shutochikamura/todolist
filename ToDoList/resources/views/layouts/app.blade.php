@@ -1,8 +1,8 @@
-<html>
+<html lang="ja">
 
 <head>
     <meta name="viewport" content="width=device-width,initial-scale=1.0" charset="UTF-8">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title')</title>
     <style>
         body {
@@ -169,6 +169,15 @@
             color: gray;
             display: inline;
             border-radius: 10px;
+        }
+
+        #progress {
+            color: black;
+        }
+
+        #done {
+            color: black;
+
         }
     </style>
 </head>
