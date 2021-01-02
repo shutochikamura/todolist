@@ -8,20 +8,13 @@
 
 
 <tr class="todo-radio">
-    <td> <input class="radio" type="radio" name="stateList" value="all" onclick="state()" checked></td>
+    <td> <input class="radio" type="radio" name="stateList" value="" onclick="state()" checked="checked"></td>
     すべて
     <td><input class="radio" type="radio" name="stateList" value="progress" onclick="state()"></td>
     作業中
     <td><input class="radio" type="radio" name="stateList" value="done" onclick="state()"></td>
     完了
 </tr>
-
-
-
-
-
-
-
 
 <table>
     <tr>
@@ -30,25 +23,26 @@
         <th>状態</th>
     </tr>
 
-
     @foreach($items as $item)
-
-
-
     <div>
-        <tr id="all" class="all">
+        <tr class=@if ($item -> state === 0 )
+            "all progress"
+            @elseif ($item -> state === 1)
+            "all done"
+            @endif
+            >
             <td class="h3"> {{$loop -> iteration}} </td>
             <td class="h3"> {{$item -> comment}} </td>
             <form action="/index/state/{{$item->id}}" method="post">
                 @csrf
                 @if($item -> state === 0)
                 <div>
-                    <td id="progress" class="progress"><input class="btn" type="submit" name="state" value="作業中">
+                    <td><input class="btn" type="submit" name="state" value="作業中">
                     </td>
                 </div>
                 @else
                 <div>
-                    <td id="done" class="done">
+                    <td>
                         <input class="btn" type="submit" name="state" value="完了">
                     </td>
                 </div>
@@ -67,9 +61,7 @@
 
 
     @endforeach
-    <div id="app">
-        <script src="{{mix('js/task.js')}}"></script>
-    </div>
+
 </table>
 <h2>新規タスクの追加</h2>
 @if (count($errors) > 0)
@@ -84,5 +76,7 @@
     <input class="text" type="text" name="comment">
     <input class="btn" type="submit" name="send" value="追加">
 </form>
-
+<div>
+    <script src="{{mix('js/task.js')}}"></script>
+</div>
 @endsection
