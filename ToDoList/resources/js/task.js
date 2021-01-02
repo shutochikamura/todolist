@@ -7,6 +7,7 @@ window.state = function () {
   var stateAll = document.querySelectorAll('.all');
   var doneAll = document.querySelectorAll('.done');
   var progressAll = document.querySelectorAll('.progress');
+  //document.getElementsByClassNameでは動かない.
 
   if (stateList[0].checked) {
     for (var i = 0; i < stateAll.length; i++) {
