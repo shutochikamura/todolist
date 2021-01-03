@@ -25,25 +25,20 @@
 
     @foreach($items as $item)
     <div>
-        <tr class=@if ($item -> state === 0 )
-            "all progress"
-            @elseif ($item -> state === 1)
-            "all done"
-            @endif
-            >
+        <tr class="task">
             <td class="h3"> {{$loop -> iteration}} </td>
             <td class="h3"> {{$item -> comment}} </td>
             <form action="/index/state/{{$item->id}}" method="post">
                 @csrf
                 @if($item -> state === 0)
                 <div>
-                    <td><input class="btn" type="submit" name="state" value="作業中">
+                    <td><input class="btn progress" type="submit" name="state" value="作業中">
                     </td>
                 </div>
                 @else
                 <div>
                     <td>
-                        <input class="btn" type="submit" name="state" value="完了">
+                        <input class="btn done" type="submit" name="state" value="完了">
                     </td>
                 </div>
                 @endif
@@ -76,7 +71,6 @@
     <input class="text" type="text" name="comment">
     <input class="btn" type="submit" name="send" value="追加">
 </form>
-<div>
-    <script src="{{mix('js/task.js')}}"></script>
-</div>
+
+<script src="{{mix('js/task.js')}}"></script>
 @endsection

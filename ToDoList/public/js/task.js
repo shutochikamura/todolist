@@ -94,31 +94,28 @@
 /***/ (function(module, exports) {
 
 window.state = function () {
-  stateList = document.getElementsByName('stateList');
-  var stateAll = document.querySelectorAll('.all');
-  var doneAll = document.querySelectorAll('.done');
+  var stateList = document.getElementsByName('stateList');
   var progressAll = document.querySelectorAll('.progress');
+  var doneAll = document.querySelectorAll('.done');
+  var taskAll = document.querySelectorAll('.task');
 
-  if (stateList[0].checked) {
-    for (var i = 0; i < stateAll.length; i++) {
-      stateAll[i].style.display = "";
-    }
-  } else if (stateList[1].checked) {
-    for (var i = 0; i < doneAll.length; i++) {
-      doneAll[i].style.display = "none";
-    }
-
-    for (var i = 0; i < progressAll.length; i++) {
-      progressAll[i].style.display = "";
-    }
+  if (stateList[1].checked) {
+    doneAll.forEach(function (done) {
+      console.log(done);
+      done.style.display = 'none';
+    });
   } else if (stateList[2].checked) {
     for (var i = 0; i < progressAll.length; i++) {
       progressAll[i].style.display = "none";
     }
 
-    for (var i = 0; i < doneAll.length; i++) {
-      doneAll[i].style.display = "";
+    for (var _i = 0; _i < doneAll.length; _i++) {
+      doneAll[_i].style.display = "";
     }
+  } else {
+    taskAll.forEach(function (task) {
+      task.style.display = '';
+    });
   }
 };
 
