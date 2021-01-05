@@ -97,21 +97,23 @@ window.state = function () {
   var stateList = document.getElementsByName('stateList');
   var progressAll = document.querySelectorAll('.progress');
   var doneAll = document.querySelectorAll('.done');
-  var taskAll = document.querySelectorAll('.task');
+  var taskAll = document.querySelectorAll('tr.task'); //ラジオボタンを押した時の処理
+
+  function stateCheck(v1, v2) {
+    doneAll.forEach(function (done) {
+      var doneList = done.closest('tr.task');
+      doneList.style.display = v1;
+    });
+    progressAll.forEach(function (progress) {
+      var progressList = progress.closest('tr.task');
+      progressList.style.display = v2;
+    });
+  }
 
   if (stateList[1].checked) {
-    doneAll.forEach(function (done) {
-      console.log(done);
-      done.style.display = 'none';
-    });
+    stateCheck('none', '');
   } else if (stateList[2].checked) {
-    for (var i = 0; i < progressAll.length; i++) {
-      progressAll[i].style.display = "none";
-    }
-
-    for (var _i = 0; _i < doneAll.length; _i++) {
-      doneAll[_i].style.display = "";
-    }
+    stateCheck('', 'none');
   } else {
     taskAll.forEach(function (task) {
       task.style.display = '';

@@ -170,15 +170,6 @@
             display: inline;
             border-radius: 10px;
         }
-
-        #progress {
-            color: black;
-        }
-
-        #done {
-            color: black;
-
-        }
     </style>
 </head>
 

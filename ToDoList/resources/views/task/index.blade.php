@@ -24,35 +24,35 @@
     </tr>
 
     @foreach($items as $item)
-    <div>
-        <tr class="task">
-            <td class="h3"> {{$loop -> iteration}} </td>
-            <td class="h3"> {{$item -> comment}} </td>
-            <form action="/index/state/{{$item->id}}" method="post">
-                @csrf
-                @if($item -> state === 0)
-                <div>
-                    <td><input class="btn progress" type="submit" name="state" value="作業中">
-                    </td>
-                </div>
-                @else
-                <div>
-                    <td>
-                        <input class="btn done" type="submit" name="state" value="完了">
-                    </td>
-                </div>
-                @endif
-            </form>
 
-
-            <form action="/index/delete/{{$item->id}}" method="post">
-                @csrf
-                <td>
-                    <input class="btn" type="submit" name="delete" value="削除">
+    <tr class="task">
+        <td class="h3"> {{$loop -> iteration}} </td>
+        <td class="h3"> {{$item -> comment}} </td>
+        <form action="/index/state/{{$item->id}}" method="post">
+            @csrf
+            @if($item -> state === 0)
+            <div>
+                <td><input class="btn progress" type="submit" name="state" value="作業中">
                 </td>
-            </form>
-        </tr>
-    </div>
+            </div>
+            @else
+            <div>
+                <td>
+                    <input class="btn done" type="submit" name="state" value="完了">
+                </td>
+            </div>
+            @endif
+        </form>
+
+
+        <form action="/index/delete/{{$item->id}}" method="post">
+            @csrf
+            <td>
+                <input class="btn" type="submit" name="delete" value="削除">
+            </td>
+        </form>
+    </tr>
+
 
 
     @endforeach
