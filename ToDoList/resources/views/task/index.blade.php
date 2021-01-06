@@ -4,15 +4,12 @@
 
 @section('content')
 
-
-
-
 <tr class="todo-radio">
-    <td> <input class="radio" type="radio" name="stateList" value="" onclick="state()" checked="checked"></td>
+    <td> <input class="radio" type="radio" name="stateList" value="" checked="checked"></td>
     すべて
-    <td><input class="radio" type="radio" name="stateList" value="progress" onclick="state()"></td>
+    <td><input class="radio" type="radio" name="stateList" value="progress"></td>
     作業中
-    <td><input class="radio" type="radio" name="stateList" value="done" onclick="state()"></td>
+    <td><input class="radio" type="radio" name="stateList" value="done"></td>
     完了
 </tr>
 

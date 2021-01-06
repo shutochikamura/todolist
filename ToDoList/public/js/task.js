@@ -93,33 +93,34 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-window.state = function () {
+function stateChange() {
   var stateList = document.getElementsByName('stateList');
   var progressAll = document.querySelectorAll('.progress');
   var doneAll = document.querySelectorAll('.done');
-  var taskAll = document.querySelectorAll('tr.task'); //ラジオボタンを押した時の処理
-
-  function stateCheck(v1, v2) {
-    doneAll.forEach(function (done) {
-      var doneList = done.closest('tr.task');
-      doneList.style.display = v1;
-    });
-    progressAll.forEach(function (progress) {
-      var progressList = progress.closest('tr.task');
-      progressList.style.display = v2;
-    });
-  }
+  var taskAll = document.querySelectorAll('.task');
 
   if (stateList[1].checked) {
-    stateCheck('none', '');
+    doneAll.forEach(function (item) {
+      item.closest('.task').style.display = 'none';
+    });
+    progressAll.forEach(function (item) {
+      item.closest('.task').style.display = '';
+    });
   } else if (stateList[2].checked) {
-    stateCheck('', 'none');
+    doneAll.forEach(function (item) {
+      item.closest('.task').style.display = '';
+    });
+    progressAll.forEach(function (item) {
+      item.closest('.task').style.display = 'none';
+    });
   } else {
     taskAll.forEach(function (task) {
       task.style.display = '';
     });
   }
-};
+}
+
+window.addEventListener("click", stateChange);
 
 /***/ }),
 
