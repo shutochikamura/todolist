@@ -68,6 +68,5 @@
     <input class="text" type="text" name="comment">
     <input class="btn" type="submit" name="send" value="追加">
 </form>
-
 <script src="{{mix('js/task.js')}}"></script>
 @endsection

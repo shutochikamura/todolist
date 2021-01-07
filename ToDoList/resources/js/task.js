@@ -1,3 +1,5 @@
+
+
 function stateChange() {
 
   const stateList = document.getElementsByName('stateList');
@@ -25,4 +27,7 @@ function stateChange() {
     });
   }
 }
-window.addEventListener("click", stateChange);
+
+document.querySelectorAll('.radio').forEach(radio => {
+  radio.addEventListener('click', stateChange);
+});
