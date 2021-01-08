@@ -28,6 +28,6 @@ function stateChange() {
   }
 }
 
-document.querySelectorAll('.radio').forEach(radio => {
+document.getElementsByName('stateList').forEach(radio => {
   radio.addEventListener('click', stateChange);
 });

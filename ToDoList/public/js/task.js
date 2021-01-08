@@ -130,7 +130,7 @@
         }
       }
 
-      document.querySelectorAll('.radio').forEach(function (radio) {
+      document.getElementsByName('stateList').forEach(function (radio) {
         radio.addEventListener('click', stateChange);
       });
 
