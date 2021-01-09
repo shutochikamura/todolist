@@ -25,7 +25,7 @@
     <tr class="task">
         <td class="h3"> {{$loop -> iteration}} </td>
         <td class="h3"> {{$item -> comment}} </td>
-        <form action="/index/state/{{$item->id}}" method="post">
+        <form action="/todo/state/{{$item->id}}" method="post">
             @csrf
             @if($item -> state === 0)
             <div>
@@ -42,7 +42,7 @@
         </form>
 
 
-        <form action="/index/delete/{{$item->id}}" method="post">
+        <form action="/todo/delete/{{$item->id}}" method="post">
             @csrf
             <td>
                 <input class="btn" type="submit" name="delete" value="削除">
@@ -63,7 +63,7 @@
     </ul>
 </div>
 @endif
-<form action="/index/create" method="post">
+<form action="/todo/create" method="post">
     @csrf
     <input class="text" type="text" name="comment">
     <input class="btn" type="submit" name="send" value="追加">

@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('index', 'App\Http\Controllers\TodoController@index');
-Route::post('index/create', 'App\Http\Controllers\TodoController@add');
-Route::post('index/delete/{id}', 'App\Http\Controllers\TodoController@remove');
-Route::post('index/state/{id}', 'App\Http\Controllers\TodoController@state');
+Route::get('todo', 'App\Http\Controllers\TodoController@index');
+Route::post('todo/create', 'App\Http\Controllers\TodoController@add');
+Route::post('todo/delete/{id}', 'App\Http\Controllers\TodoController@remove');
+Route::post('todo/state/{id}', 'App\Http\Controllers\TodoController@state');
