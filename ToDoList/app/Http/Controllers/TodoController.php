@@ -10,6 +10,7 @@ class TodoController extends Controller
 {
     public function index(Request $request)
     {
+
         $items = Task::all();
         return view('task.index', ['items' => $items]);
     }
@@ -20,14 +21,14 @@ class TodoController extends Controller
         $form = $request->all();
         unset($form['_token']);
         $task->fill($form)->save();
-        return redirect('/index');
+        return redirect('/todo');
     }
     public function remove(Request $request)
     {
         $task = Task::find($request->id);
         $task->delete();
 
-        return redirect('/index');
+        return redirect('/todo');
     }
 
     public function state(Request $request)
@@ -36,11 +37,11 @@ class TodoController extends Controller
         if ($task->state === 0) {
             $task->state = 1;
             $task->save();
-            return redirect('/index');
+            return redirect('/todo');
         } elseif ($task->state === 1) {
             $task->state = 0;
             $task->save();
-            return redirect('/index');
+            return redirect('/todo');
         }
     }
 }
